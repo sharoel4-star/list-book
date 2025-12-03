@@ -1,7 +1,24 @@
 from fastapi import FastAPI, HTTPException
 
 app = FastAPI()
-books = [ 
+books = [ {
+        "id": 1,
+        "title": "The Pragmatic Programmer",
+        "author": "Andrew Hunt & David Thomas",
+        "year": 1999
+    },
+    {
+        "id": 2,
+        "title": "Clean Code",
+        "author": "Robert C. Martin",
+        "year": 2008
+    },
+    {
+        "id": 3,
+        "title": "Introduction to Algorithms",
+        "author": "Thomas H. Cormen",
+        "year": 1990
+    } 
    ]
 counter = 1
 @app.get("/books")
@@ -32,5 +49,6 @@ def delete_book(book_id: int):
             books.remove(book)
             return {"message": "Book deleted"}
     raise HTTPException(status_code=404, detail="Book not found")
+
 
 
